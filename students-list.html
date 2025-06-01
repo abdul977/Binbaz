@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binbaz Students List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #F26522 0%, #e55a1f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//binbaz%20logo.jpg');
+            background-size: 150px;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-container {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #F26522;
+            box-shadow: 0 0 0 3px rgba(242, 101, 34, 0.1);
+        }
+
+        .stats {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #F26522;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #F26522 0%, #e55a1f 100%);
+            color: white;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: #f1f3f4;
+        }
+
+        .student-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #F26522;
+        }
+
+        .student-id {
+            font-weight: bold;
+            color: #F26522;
+            font-family: 'Courier New', monospace;
+        }
+
+        .student-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .student-email {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .program-badge {
+            background: linear-gradient(135deg, #F26522 0%, #e55a1f 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .stat-item {
+                width: 100%;
+            }
+            
+            th, td {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .student-photo {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Binbaz Institute</h1>
+            <p>Students Directory - Islamic Studies Program</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search by Student ID, Name, or Email...">
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalStudents">0</div>
+                <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="visibleStudents">0</div>
+                <div class="stat-label">Showing</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2024/2025</div>
+                <div class="stat-label">Academic Year</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Student ID</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Program</th>
+                        <th>Enrollment Year</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTableBody">
+                    <!-- Students will be populated here by JavaScript -->
+                </tbody>
+            </table>
+            <div id="noResults" class="no-results" style="display: none;">
+                No students found matching your search criteria.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Student data from the application
+        const students = [
+            {
+                id: "BIA2024001",
+                name: "Ahmad Abdullah",
+                email: "ahmad.abdullah@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            },
+            {
+                id: "BIA2024002",
+                name: "Fatima Hassan",
+                email: "fatima.hassan@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            },
+            {
+                id: "BIA2024003",
+                name: "Ibrahim Mohammed",
+                email: "ibrahim.mohammed@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            },
+            {
+                id: "BIA2024004",
+                name: "Aisha Rahman",
+                email: "aisha.rahman@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            },
+            {
+                id: "BIA2024006",
+                name: "Abubakar Haruna",
+                email: "abubakar.haruna@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Haruna%20Abubakar_Kwara%20state.jpg"
+            },
+            {
+                id: "BIA2024007",
+                name: "Zakariya Kilishi",
+                email: "zakariya.kilishi@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Zakariya%20Kilishi%20kwara.jpg"
+            },
+            {
+                id: "BIA2024008",
+                name: "Ismaila Jummai Muhammad",
+                email: "ismaila.jummai@example.com",
+                semester: "First Semester 2024/2025",
+                program: "Islamic Studies",
+                enrollmentYear: "2024",
+                photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Jumai%20ismaila,%20Nasarawa%20state.jpg"
+            }
+        ];
+
+        // Function to render students table
+        function renderStudents(studentsToRender = students) {
+            const tableBody = document.getElementById('studentsTableBody');
+            const noResults = document.getElementById('noResults');
+            
+            if (studentsToRender.length === 0) {
+                tableBody.innerHTML = '';
+                noResults.style.display = 'block';
+                document.getElementById('studentsTable').style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                document.getElementById('studentsTable').style.display = 'table';
+                
+                tableBody.innerHTML = studentsToRender.map(student => `
+                    <tr>
+                        <td>
+                            <img src="${student.photo}" alt="${student.name}" class="student-photo" 
+                                 onerror="this.src='https://via.placeholder.com/50x50/F26522/white?text=${student.name.charAt(0)}'">
+                        </td>
+                        <td class="student-id">${student.id}</td>
+                        <td class="student-name">${student.name}</td>
+                        <td class="student-email">${student.email}</td>
+                        <td><span class="program-badge">${student.program}</span></td>
+                        <td>${student.enrollmentYear}</td>
+                    </tr>
+                `).join('');
+            }
+            
+            // Update stats
+            document.getElementById('visibleStudents').textContent = studentsToRender.length;
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    renderStudents(students);
+                } else {
+                    const filteredStudents = students.filter(student => 
+                        student.id.toLowerCase().includes(searchTerm) ||
+                        student.name.toLowerCase().includes(searchTerm) ||
+                        student.email.toLowerCase().includes(searchTerm)
+                    );
+                    renderStudents(filteredStudents);
+                }
+            });
+        }
+
+        // Initialize the page
+        function init() {
+            // Set total students count
+            document.getElementById('totalStudents').textContent = students.length;
+            
+            // Render all students initially
+            renderStudents(students);
+            
+            // Setup search functionality
+            setupSearch();
+        }
+
+        // Run initialization when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

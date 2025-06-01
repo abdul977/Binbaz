@@ -66,14 +66,23 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Check for saved auth on mount
+  // Check for saved auth on mount and refresh data from source
   useEffect(() => {
     const savedAuth = localStorage.getItem('studentAuth');
     if (savedAuth) {
       try {
         const { student } = JSON.parse(savedAuth);
         if (student) {
-          dispatch({ type: 'LOGIN_SUCCESS', payload: student });
+          // Always fetch fresh data from source instead of using cached data
+          const freshStudent = getStudentById(student.id);
+          if (freshStudent) {
+            dispatch({ type: 'LOGIN_SUCCESS', payload: freshStudent });
+            // Update localStorage with fresh data
+            localStorage.setItem('studentAuth', JSON.stringify({ student: freshStudent }));
+          } else {
+            // Student no longer exists, clear cache
+            localStorage.removeItem('studentAuth');
+          }
         }
       } catch (error) {
         localStorage.removeItem('studentAuth');

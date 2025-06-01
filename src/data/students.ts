@@ -113,7 +113,6 @@ export const students: StudentWithResults[] = [
     enrollmentYear: "2024",
     photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Zakariya%20Kilishi%20kwara.jpg",
     results: [
-      { courseCode: "Quran", testScore: 0, examScore: 0, marks: 0, grade: "F", status: "failed" },
       { courseCode: "TAJ 201", testScore: 22, examScore: 42, marks: 64, grade: "C+", status: "passed" },
       { courseCode: "FIQ/HAD 201", testScore: 22, examScore: 42, marks: 64, grade: "C+", status: "passed" },
       { courseCode: "ARB 211", testScore: 26, examScore: 60, marks: 86, grade: "A", status: "passed" },
