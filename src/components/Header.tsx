@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, User } from 'lucide-react';
 
 const Header: React.FC = () => {
   const { state, logout } = useAuth();
-  
+
+  const getHomeLink = () => {
+    return state.isAuthenticated ? '/dashboard' : '/';
+  };
+
   return (
     <header className="bg-[#1A3A6E] text-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center">
+        <Link to={getHomeLink()} className="flex items-center hover:opacity-90 transition-opacity duration-200">
           <img
             src="https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//binbaz%20logo.jpg"
             alt="Binbaz International Academy"
@@ -18,7 +23,7 @@ const Header: React.FC = () => {
             <h1 className="text-xl font-bold">Binbaz International Academy</h1>
             <p className="text-sm opacity-90">Student Results Portal</p>
           </div>
-        </div>
+        </Link>
         
         {state.isAuthenticated && state.student && (
           <div className="flex items-center">

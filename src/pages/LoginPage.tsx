@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../components/Layout';
 import AuthForm from '../components/AuthForm';
 import { useAuth } from '../context/AuthContext';
@@ -8,13 +8,16 @@ import { BookOpen } from 'lucide-react';
 const LoginPage: React.FC = () => {
   const { state } = useAuth();
   const navigate = useNavigate();
-  
+  const location = useLocation();
+
   // Redirect if already authenticated
   useEffect(() => {
     if (state.isAuthenticated) {
-      navigate('/dashboard');
+      // Check if there's a redirect location from ProtectedRoute
+      const from = location.state?.from?.pathname || '/dashboard';
+      navigate(from, { replace: true });
     }
-  }, [state.isAuthenticated, navigate]);
+  }, [state.isAuthenticated, navigate, location.state]);
   
   return (
     <Layout>

@@ -6,5 +6,18 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true
+  },
+  // Configure SPA fallback for client-side routing
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  // Ensure all routes fallback to index.html for SPA routing
+  preview: {
+    port: 5173,
+    host: true
   }
 })

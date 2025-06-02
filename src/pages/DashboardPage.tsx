@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import StudentProfile from '../components/StudentProfile';
 import ResultsTable from '../components/ResultsTable';
@@ -13,21 +12,13 @@ import { FileText, Award } from 'lucide-react';
 
 const DashboardPage: React.FC = () => {
   const { state } = useAuth();
-  const navigate = useNavigate();
   const [showCertificatePreview, setShowCertificatePreview] = useState(false);
-  
-  // Redirect if not authenticated
-  useEffect(() => {
-    if (!state.isAuthenticated) {
-      navigate('/');
-    }
-  }, [state.isAuthenticated, navigate]);
-  
-  // Handle loading state or no student data
-  if (state.loading || !state.student) {
+
+  // ProtectedRoute ensures authentication, so we can safely access state.student
+  if (!state.student) {
     return (
       <Layout>
-        <div className="min-h-[calc(100vh-184px)] flex items-center justify-center bg-gray-100">
+        <div className="min-h-[calc(100vh-200px)] flex items-center justify-center bg-gray-100">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1A3A6E] mx-auto mb-4"></div>
             <p className="text-gray-600">Loading your results...</p>

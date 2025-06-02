@@ -20,7 +20,7 @@ const initialState: AuthState = {
 // Create the context
 const AuthContext = createContext<{
   state: AuthState;
-  login: (studentId: string) => Promise<void>;
+  login: (studentId: string, redirectTo?: string) => Promise<void>;
   logout: () => void;
 }>({
   state: initialState,
@@ -91,18 +91,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   // Login function
-  const login = async (studentId: string): Promise<void> => {
+  const login = async (studentId: string, redirectTo?: string): Promise<void> => {
     dispatch({ type: 'LOGIN_START' });
-    
+
     try {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       const student = getStudentById(studentId);
-      
+
       if (student) {
         dispatch({ type: 'LOGIN_SUCCESS', payload: student });
-        localStorage.setItem('studentAuth', JSON.stringify({ student }));
+        localStorage.setItem('studentAuth', JSON.stringify({
+          student,
+          redirectTo: redirectTo || '/dashboard',
+          timestamp: Date.now()
+        }));
       } else {
         dispatch({ type: 'LOGIN_FAILURE', payload: 'Invalid Student ID. Please try again.' });
       }
