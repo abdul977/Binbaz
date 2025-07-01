@@ -5,7 +5,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    host: true
+    host: true,
+    // Enable SPA fallback for client-side routing in development
+    historyApiFallback: true
   },
   // Configure SPA fallback for client-side routing
   build: {
