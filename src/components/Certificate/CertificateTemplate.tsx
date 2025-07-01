@@ -15,7 +15,17 @@ const CertificateTemplate: React.FC<CertificateTemplateProps> = ({ student, clas
   const certificateData = generateCertificateData(student);
 
   return (
-    <div className={`bg-white relative overflow-visible min-h-[700px] w-full aspect-[420/297] ${className}`} id="certificate-template">
+    <div
+      className={`bg-white relative overflow-visible certificate-landscape ${className}`}
+      id="certificate-template"
+      style={{
+        width: '297mm',
+        height: '210mm',
+        minWidth: '1122px',
+        minHeight: '794px',
+        aspectRatio: '297/210'
+      }}
+    >
       {/* Background Watermark */}
       <div className="absolute inset-0 flex items-center justify-center opacity-30">
         <img

@@ -139,7 +139,7 @@ export const students: StudentWithResults[] = [
   },
   {
     id: "BIA2024009",
-    name: "Summaryah oiza Muhammad",
+    name: "Summayyah oiza Muhammad",
     email: "summaryah.oiza@example.com",
     semester: "First Semester 2024/2025",
     program: "Islamic Studies",
