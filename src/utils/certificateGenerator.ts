@@ -146,19 +146,34 @@ export const previewCertificate = async (student: StudentWithResults): Promise<v
         <head>
           <title>Certificate Preview - ${student.name}</title>
           <style>
-            body { 
-              margin: 0; 
-              padding: 20px; 
+            body {
+              margin: 0;
+              padding: 20px;
               font-family: system-ui, -apple-system, sans-serif;
               background-color: #f3f4f6;
+              min-width: 1200px;
             }
             .certificate-container {
-              max-width: 1000px;
+              width: 100%;
+              max-width: 1200px;
               margin: 0 auto;
               background: white;
               box-shadow: 0 10px 25px rgba(0,0,0,0.1);
               border-radius: 8px;
-              overflow: hidden;
+              overflow: auto;
+            }
+            /* Force landscape orientation for mobile */
+            @media screen and (max-width: 768px) {
+              body {
+                transform: rotate(90deg);
+                transform-origin: center center;
+                width: 100vh;
+                height: 100vw;
+                overflow-x: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+              }
             }
             .print-button {
               position: fixed;

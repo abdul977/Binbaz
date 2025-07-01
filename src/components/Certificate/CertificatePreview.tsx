@@ -46,8 +46,27 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ student, isOpen
         <div className="flex justify-between items-center p-4 border-b border-gray-200">
           <h2 className="text-xl font-bold text-gray-800">Certificate Preview</h2>
           <div className="flex items-center space-x-2">
+            <button
+              onClick={() => handleDownload('pdf')}
+              disabled={isGenerating}
+              className="flex items-center px-3 py-2 bg-[#1A3A6E] hover:bg-[#2a5ba6] disabled:bg-gray-300 text-white rounded-md transition-colors duration-200 text-sm"
+            >
+              {isGenerating ? (
+                <Loader className="animate-spin mr-2" size={16} />
+              ) : (
+                <Download className="mr-2" size={16} />
+              )}
+              PDF
+            </button>
 
-            
+            <button
+              onClick={handlePrint}
+              className="flex items-center px-3 py-2 bg-[#F26522] hover:bg-orange-600 text-white rounded-md transition-colors duration-200 text-sm"
+            >
+              <Printer className="mr-2" size={16} />
+              Print
+            </button>
+
             <button
               onClick={onClose}
               className="flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200"
@@ -66,14 +85,9 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ student, isOpen
         )}
 
         {/* Certificate Content */}
-        <div className="overflow-auto max-h-[calc(90vh-120px)]">
-          <div className="p-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <CertificateTemplate 
-                student={student} 
-                className="transform scale-75 origin-top-left w-[133.33%]" 
-              />
-            </div>
+        <div className="certificate-preview-body">
+          <div className="certificate-wrapper">
+            <CertificateTemplate student={student} />
           </div>
         </div>
 

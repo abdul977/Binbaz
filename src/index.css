@@ -1,3 +1,6 @@
+/* Certificate styles */
+@import './styles/certificate.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

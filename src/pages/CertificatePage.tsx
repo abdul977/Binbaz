@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import CertificateTemplate from '../components/Certificate/CertificateTemplate';
+import OrientationGuide from '../components/Certificate/OrientationGuide';
 import { useAuth } from '../context/AuthContext';
 import { generateCertificate, CertificateOptions } from '../utils/certificateGenerator';
 import { Download, Printer, ArrowLeft, Loader } from 'lucide-react';
@@ -57,8 +58,9 @@ const CertificatePage: React.FC = () => {
 
   return (
     <Layout>
+      <OrientationGuide />
       <div className="bg-gray-100 min-h-[calc(100vh-184px)]">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-2 md:px-4 py-4 md:py-8">
           {/* Header */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-4">
