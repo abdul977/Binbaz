@@ -146,9 +146,9 @@ export const students: StudentWithResults[] = [
     enrollmentYear: "2024",
     photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Summayah_oiza_Muhammad.jpg",
     results: [
-      { courseCode: "Quran", testScore: 23, examScore: 35, marks: 58, grade: "C", status: "passed" },
-      { courseCode: "ARB 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" },
-      { courseCode: "TAJ 201", testScore: 18, examScore: 26, marks: 44, grade: "F", status: "failed" }
+      { courseCode: "Quran", testScore: 21, examScore: 58, marks: 79, grade: "B+", status: "passed" },
+      { courseCode: "ARB 201", testScore: 26, examScore: 50, marks: 76, grade: "B+", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 30, examScore: 44, marks: 74, grade: "B", status: "passed" }
     ]
   },
   {
@@ -160,9 +160,9 @@ export const students: StudentWithResults[] = [
     enrollmentYear: "2024",
     photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Saratu_Ohunene_Saed.jpg",
     results: [
-      { courseCode: "Quran", testScore: 22, examScore: 32, marks: 54, grade: "C-", status: "passed" },
-      { courseCode: "ARB 201", testScore: 19, examScore: 29, marks: 48, grade: "D+", status: "passed" },
-      { courseCode: "TAJ 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" }
+      { courseCode: "Quran", testScore: 24, examScore: 54, marks: 78, grade: "B+", status: "passed" },
+      { courseCode: "ARB 201", testScore: 21, examScore: 48, marks: 69, grade: "C+", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 34, examScore: 50, marks: 84, grade: "A", status: "passed" }
     ]
   },
   {
@@ -174,9 +174,9 @@ export const students: StudentWithResults[] = [
     enrollmentYear: "2024",
     photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Haleemah_Muhammad.jpg",
     results: [
-      { courseCode: "Quran", testScore: 23, examScore: 35, marks: 58, grade: "C", status: "passed" },
-      { courseCode: "ARB 201", testScore: 22, examScore: 34, marks: 56, grade: "C", status: "passed" },
-      { courseCode: "TAJ 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" }
+      { courseCode: "Quran", testScore: 11, examScore: 58, marks: 69, grade: "C+", status: "passed" },
+      { courseCode: "ARB 201", testScore: 36, examScore: 56, marks: 92, grade: "A+", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 32, examScore: 50, marks: 82, grade: "A-", status: "passed" }
     ]
   },
   {
@@ -188,9 +188,79 @@ export const students: StudentWithResults[] = [
     enrollmentYear: "2024",
     photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Shuaeeb_Onize_Keefayah_Kogi_State.jpg",
     results: [
-      { courseCode: "Quran", testScore: 22, examScore: 34, marks: 56, grade: "C", status: "passed" },
-      { courseCode: "ARB 201", testScore: 17, examScore: 25, marks: 42, grade: "D", status: "passed" },
-      { courseCode: "TAJ 201", testScore: 17, examScore: 25, marks: 42, grade: "D", status: "passed" }
+      { courseCode: "Quran", testScore: 34, examScore: 56, marks: 90, grade: "A", status: "passed" },
+      { courseCode: "ARB 201", testScore: 26, examScore: 42, marks: 68, grade: "C+", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 14, examScore: 42, marks: 56, grade: "C", status: "passed" }
+    ]
+  },
+  {
+    id: "BIA2024013",
+    name: "Yinusa Suliyat Bolajoko",
+    email: "yinusa.suliyat@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Yinusa%20Suliyat%20Bolajoko%20Lagos.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 23, examScore: 50, marks: 73, grade: "B", status: "passed" },
+      { courseCode: "ARB 201", testScore: 15, examScore: 18, marks: 33, grade: "F", status: "failed" },
+      { courseCode: "TAJ 201", testScore: 12, examScore: 20, marks: 32, grade: "F", status: "failed" }
+    ]
+  },
+  {
+    id: "BIA2024014",
+    name: "Yusuf Habibat Omoboriola",
+    email: "yusuf.habibat@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Yusuf%20Habibat%20Omoboriola_Osun%20State.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 26, examScore: 0, marks: 26, grade: "F", status: "failed" },
+      { courseCode: "ARB 201", testScore: 32, examScore: 50, marks: 82, grade: "A-", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 20, examScore: 38, marks: 58, grade: "C", status: "passed" }
+    ]
+  },
+  {
+    id: "BIA2024015",
+    name: "Adegbesan Tawakalt",
+    email: "adegbesan.tawakalt@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Adegbesan%20Tawakalt%20Ogun%20state.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 34, examScore: 58, marks: 92, grade: "A+", status: "passed" },
+      { courseCode: "ARB 201", testScore: 36, examScore: 46, marks: 82, grade: "A-", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 38, examScore: 54, marks: 92, grade: "A+", status: "passed" }
+    ]
+  },
+  {
+    id: "BIA2024016",
+    name: "Abdulqadiri Zainab",
+    email: "abdulqadiri.zainab@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Abdulqadiri%20zainab%20_Edo%20state.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 30, examScore: 51, marks: 81, grade: "A-", status: "passed" },
+      { courseCode: "ARB 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 30, examScore: 56, marks: 86, grade: "A", status: "passed" }
+    ]
+  },
+  {
+    id: "BIA2024017",
+    name: "TAOHEED SHERIFAT ABIDEMI",
+    email: "taoheed.sherifat@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//TAOHEED%20SHERIFAT%20ABIDEMI%20OSUN%20STATE.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 6, examScore: 54, marks: 60, grade: "C+", status: "passed" },
+      { courseCode: "ARB 201", testScore: 21, examScore: 48, marks: 69, grade: "C+", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 32, examScore: 40, marks: 72, grade: "B", status: "passed" }
     ]
   }
 ];

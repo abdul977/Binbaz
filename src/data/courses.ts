@@ -10,13 +10,13 @@ export const courses: Course[] = [
   {
     code: 'ARB 201',
     title: 'Arabic language',
-    instructor: 'Ust, Abdulmaleek',
+    instructor: 'Ustaz Abdul Mumeen',
     creditHours: 3
   },
   {
     code: 'Quran',
     title: 'Quran memorization',
-    instructor: 'Ust, Muhammad',
+    instructor: 'Ustaz Abu Bakar',
     creditHours: 4
   },
   {
