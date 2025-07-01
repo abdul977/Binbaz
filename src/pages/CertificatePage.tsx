@@ -110,8 +110,10 @@ const CertificatePage: React.FC = () => {
           )}
 
           {/* Certificate Display */}
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
-            <CertificateTemplate student={state.student} />
+          <div className="certificate-container bg-white rounded-lg shadow-lg p-4 md:p-8 mx-auto">
+            <div className="certificate-wrapper">
+              <CertificateTemplate student={state.student} />
+            </div>
           </div>
 
           {/* Download Options */}
