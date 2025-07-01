@@ -245,7 +245,7 @@ export const students: StudentWithResults[] = [
     photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Abdulqadiri%20zainab%20_Edo%20state.jpg",
     results: [
       { courseCode: "Quran", testScore: 30, examScore: 51, marks: 81, grade: "A-", status: "passed" },
-      { courseCode: "ARB 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" },
+      { courseCode: "ARB 201", testScore: 31, examScore: 56, marks: 87, grade: "A", status: "passed" },
       { courseCode: "TAJ 201", testScore: 30, examScore: 56, marks: 86, grade: "A", status: "passed" }
     ]
   },
