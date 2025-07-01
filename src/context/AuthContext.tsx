@@ -68,32 +68,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Check for saved auth on mount and refresh data from source
   useEffect(() => {
-    console.log('AuthProvider - Checking for saved authentication');
     const savedAuth = localStorage.getItem('studentAuth');
     if (savedAuth) {
       try {
         const { student } = JSON.parse(savedAuth);
-        console.log('AuthProvider - Found saved auth for student:', student?.id);
         if (student) {
           // Always fetch fresh data from source instead of using cached data
           const freshStudent = getStudentById(student.id);
           if (freshStudent) {
-            console.log('AuthProvider - Restoring authentication for:', freshStudent.name);
             dispatch({ type: 'LOGIN_SUCCESS', payload: freshStudent });
             // Update localStorage with fresh data
             localStorage.setItem('studentAuth', JSON.stringify({ student: freshStudent }));
           } else {
             // Student no longer exists, clear cache
-            console.log('AuthProvider - Student no longer exists, clearing cache');
             localStorage.removeItem('studentAuth');
           }
         }
       } catch (error) {
-        console.log('AuthProvider - Error parsing saved auth, clearing cache:', error);
         localStorage.removeItem('studentAuth');
       }
-    } else {
-      console.log('AuthProvider - No saved authentication found');
     }
   }, []);
 

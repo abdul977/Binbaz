@@ -23,37 +23,41 @@ const CourseCard: React.FC<CourseCardProps> = ({ result }) => {
   
   return (
     <div className="rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
-      <div className={`bg-gradient-to-r ${gradientClass} p-4 text-white`}>
+      <div className={`bg-gradient-to-r ${gradientClass} p-3 sm:p-4 text-white`}>
         <div className="flex justify-between items-start">
-          <h3 className="font-bold text-lg">{result.courseCode}</h3>
-          <div className={`text-2xl font-bold ${getGradeColor(result.grade)} bg-white rounded-full h-10 w-10 flex items-center justify-center`}>
+          <div className="min-w-0 flex-1 mr-3">
+            <h3 className="font-bold text-base sm:text-lg truncate">{result.courseCode}</h3>
+            <p className="mt-1 text-white/90 font-medium text-sm sm:text-base leading-tight">{course.title}</p>
+          </div>
+          <div className={`text-xl sm:text-2xl font-bold ${getGradeColor(result.grade)} bg-white rounded-full h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center flex-shrink-0`}>
             {result.grade}
           </div>
         </div>
-        <p className="mt-1 text-white/90 font-medium">{course.title}</p>
       </div>
-      
-      <div className="p-4 bg-white">
+
+      <div className="p-3 sm:p-4 bg-white">
         <div className="flex items-center text-gray-600 mb-2">
-          <User size={16} className="mr-2" />
-          <span className="text-sm">{course.instructor}</span>
+          <User size={14} className="mr-2 sm:w-4 sm:h-4" />
+          <span className="text-xs sm:text-sm truncate">{course.instructor}</span>
         </div>
-        <div className="flex items-center text-gray-600">
-          <BookOpen size={16} className="mr-2" />
-          <span className="text-sm">{course.creditHours} Credit Hours</span>
+        <div className="flex items-center text-gray-600 mb-3">
+          <BookOpen size={14} className="mr-2 sm:w-4 sm:h-4" />
+          <span className="text-xs sm:text-sm">{course.creditHours} Credit Hours</span>
         </div>
-        
-        <div className="mt-4 pt-3 border-t border-gray-100">
+
+        <div className="pt-3 border-t border-gray-100">
           <div className="grid grid-cols-2 gap-2 mb-3">
-            <div className="text-sm text-gray-600">
-              Test: <span className="font-medium">{result.testScore}/40</span>
+            <div className="text-xs sm:text-sm text-gray-600">
+              <span className="block sm:inline">Test:</span>
+              <span className="font-medium ml-0 sm:ml-1">{result.testScore}/40</span>
             </div>
-            <div className="text-sm text-gray-600">
-              Exam: <span className="font-medium">{result.examScore}/60</span>
+            <div className="text-xs sm:text-sm text-gray-600">
+              <span className="block sm:inline">Exam:</span>
+              <span className="font-medium ml-0 sm:ml-1">{result.examScore}/60</span>
             </div>
           </div>
           <div className="flex justify-between items-center">
-            <div className="text-sm text-gray-800 font-semibold">
+            <div className="text-xs sm:text-sm text-gray-800 font-semibold">
               Total: <span className="font-bold">{result.marks}/100</span>
             </div>
             <div className={`text-xs font-medium px-2 py-1 rounded-full uppercase ${
