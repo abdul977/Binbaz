@@ -32,16 +32,18 @@ export const generateCertificate = async (
       throw new Error('Certificate template not found');
     }
 
-    // Configure html2canvas options
+    // Configure html2canvas options for landscape orientation
     const canvasOptions = {
       scale: scale,
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
-      width: certificateElement.scrollWidth,
-      height: certificateElement.scrollHeight,
+      width: Math.max(certificateElement.scrollWidth, 1122), // A4 landscape width in pixels at 96 DPI
+      height: Math.max(certificateElement.scrollHeight, 794), // A4 landscape height in pixels at 96 DPI
       scrollX: 0,
       scrollY: 0,
+      windowWidth: 1122,
+      windowHeight: 794,
     };
 
     // Generate canvas from the certificate element
@@ -64,9 +66,9 @@ export const generateCertificate = async (
 const generatePDF = async (canvas: HTMLCanvasElement, filename: string, quality: number): Promise<void> => {
   const imgData = canvas.toDataURL('image/jpeg', quality);
   
-  // Calculate PDF dimensions (A3 landscape)
-  const pdfWidth = 420; // A3 width in mm (landscape)
-  const pdfHeight = 297; // A3 height in mm (landscape)
+  // Calculate PDF dimensions (A4 landscape)
+  const pdfWidth = 297; // A4 width in mm (landscape)
+  const pdfHeight = 210; // A4 height in mm (landscape)
   
   // Calculate image dimensions to fit PDF while maintaining aspect ratio
   const imgWidth = canvas.width;
@@ -84,7 +86,7 @@ const generatePDF = async (canvas: HTMLCanvasElement, filename: string, quality:
   const pdf = new jsPDF({
     orientation: 'landscape',
     unit: 'mm',
-    format: 'a3'
+    format: 'a4'
   });
   
   pdf.addImage(imgData, 'JPEG', x, y, scaledWidth, scaledHeight);
@@ -130,8 +132,8 @@ export const previewCertificate = async (student: StudentWithResults): Promise<v
     // Clone the certificate element
     const clonedElement = certificateElement.cloneNode(true) as HTMLElement;
     
-    // Create a new window for preview
-    const previewWindow = window.open('', '_blank', 'width=1200,height=800,scrollbars=yes');
+    // Create a new window for preview with landscape dimensions
+    const previewWindow = window.open('', '_blank', 'width=1400,height=900,scrollbars=yes');
     
     if (!previewWindow) {
       throw new Error('Unable to open preview window. Please check your popup blocker.');
