@@ -136,6 +136,62 @@ export const students: StudentWithResults[] = [
       { courseCode: "ARB 201", testScore: 38, examScore: 57, marks: 95, grade: "A+", status: "passed" },
       { courseCode: "Mutoon 201", testScore: 36, examScore: 51, marks: 87, grade: "A", status: "passed" }
     ]
+  },
+  {
+    id: "BIA2024009",
+    name: "Summaryah oiza Muhammad",
+    email: "summaryah.oiza@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Summayah_oiza_Muhammad.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 23, examScore: 35, marks: 58, grade: "C", status: "passed" },
+      { courseCode: "ARB 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 18, examScore: 26, marks: 44, grade: "F", status: "failed" }
+    ]
+  },
+  {
+    id: "BIA2024010",
+    name: "Saratu Ohunene Sa'aed",
+    email: "saratu.ohunene@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Saratu_Ohunene_Saed.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 22, examScore: 32, marks: 54, grade: "C-", status: "passed" },
+      { courseCode: "ARB 201", testScore: 19, examScore: 29, marks: 48, grade: "D+", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" }
+    ]
+  },
+  {
+    id: "BIA2024011",
+    name: "Muhammad Haleemah",
+    email: "muhammad.haleemah@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Haleemah_Muhammad.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 23, examScore: 35, marks: 58, grade: "C", status: "passed" },
+      { courseCode: "ARB 201", testScore: 22, examScore: 34, marks: 56, grade: "C", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 20, examScore: 30, marks: 50, grade: "C-", status: "passed" }
+    ]
+  },
+  {
+    id: "BIA2024012",
+    name: "Shuaeeb Onize Keefayah",
+    email: "shuaeeb.onize@example.com",
+    semester: "First Semester 2024/2025",
+    program: "Islamic Studies",
+    enrollmentYear: "2024",
+    photo: "https://vdqbjdfhcxdkpsdrojtd.supabase.co/storage/v1/object/public/media-binbaz//Shuaeeb_Onize_Keefayah_Kogi_State.jpg",
+    results: [
+      { courseCode: "Quran", testScore: 22, examScore: 34, marks: 56, grade: "C", status: "passed" },
+      { courseCode: "ARB 201", testScore: 17, examScore: 25, marks: 42, grade: "D", status: "passed" },
+      { courseCode: "TAJ 201", testScore: 17, examScore: 25, marks: 42, grade: "D", status: "passed" }
+    ]
   }
 ];
 

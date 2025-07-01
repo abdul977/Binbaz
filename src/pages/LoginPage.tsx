@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../components/Layout';
 import AuthForm from '../components/AuthForm';
+import RoutingTest from '../components/RoutingTest';
 import { useAuth } from '../context/AuthContext';
 import { BookOpen } from 'lucide-react';
 
@@ -23,6 +24,9 @@ const LoginPage: React.FC = () => {
     <Layout>
       <div className="min-h-[calc(100vh-184px)] bg-gray-100 flex flex-col items-center justify-center px-4 py-12">
         <div className="w-full max-w-4xl mx-auto">
+          {/* Routing Test Panel - Remove this in production */}
+          <RoutingTest />
+
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-[#1A3A6E] mb-2">
               Student Results Portal
